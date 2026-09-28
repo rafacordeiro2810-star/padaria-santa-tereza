@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Padaria Santa Tereza · Desde 1872</title>
+<meta name="description" content="A padaria mais antiga em funcionamento de São Paulo. Casa da famosa Coxa Creme, na Praça Dr. João Mendes, Centro Histórico.">
+<meta name="theme-color" content="#1E1610">
+<link rel="icon" href="img/favicon.png">
+<link rel="preload" as="image" href="video/salao-poster.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..600&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pergaminho:#EFE4CF;
+  --linho:#F7F0E2;
+  --areia:#E2D2B4;
+  --cafe:#2B1D14;
+  --noite:#1E1610;
+  --sepia:#58432F;
+  --bordo:#6B1F22;
+  --bordo-escuro:#521517;
+  --ouro:#A8864F;
+  --ouro-claro:#D4B77E;
+  --creme-texto:#F5ECDB;
+  --display:"Bodoni Moda", "Didot", Georgia, serif;
+  --texto:"Libre Franklin", system-ui, sans-serif;
+  --script:"Pinyon Script", cursive;
+  --largura:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--pergaminho);color:var(--cafe);font:400 1.0625rem/1.7 var(--texto);-webkit-font-smoothing:antialiased}
+img,video{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ouro-claro);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.1;margin:0;letter-spacing:0;font-optical-sizing:none;font-variation-settings:"opsz" 22}
+/* títulos grandes e decorativos mantêm o contraste alto do Bodoni */
+.coxa h2,.quadro .ano,.anos .n{font-optical-sizing:auto;font-variation-settings:normal}
+.lugares,.quando,.visite dt,.convite ul,.coxa blockquote{font-optical-sizing:none;font-variation-settings:"opsz" 14}
+p{margin:0 0 1em}
+.miolo{max-width:var(--largura);margin:0 auto;padding:0 24px}
+@media (max-width:600px){.miolo{padding:0 16px}}
+.pular{position:absolute;left:-9999px;top:8px;z-index:100;background:var(--linho);padding:8px 14px}
+.pular:focus{left:8px}
+
+/* flor de lis como máscara: recolorível */
+.lis{display:inline-block;width:1.1em;height:1.1em;background:currentColor;
+  -webkit-mask:url(img/flor-de-lis.png) center/contain no-repeat;mask:url(img/flor-de-lis.png) center/contain no-repeat}
+
+/* selo 150 anos */
+.anos{display:inline-flex;align-items:center;gap:.12em;color:var(--ouro-claro);line-height:1}
+.anos .n{font-family:var(--display);font-weight:400;font-size:1em;letter-spacing:-.04em}
+.anos .t{display:flex;flex-direction:column;gap:.06em}
+.anos b{font:500 .17em/1 var(--display);letter-spacing:.32em;text-transform:uppercase;color:var(--creme-texto)}
+.anos i{font:400 .26em/1 var(--script);color:var(--creme-texto);white-space:nowrap}
+
+/* botões */
+.botao{display:inline-flex;align-items:center;justify-content:center;min-height:48px;background:var(--bordo);color:var(--linho)!important;text-decoration:none;font-weight:700;font-size:1rem;padding:12px 24px;border-radius:2px;transition:background .2s,color .2s,box-shadow .2s}
+.botao:hover{background:var(--bordo-escuro)}
+.botao.ouro{background:var(--ouro-claro);color:var(--noite)!important}
+.botao.ouro:hover{background:#E3CA95}
+.botao.vazado{background:transparent;color:var(--creme-texto)!important;box-shadow:inset 0 0 0 1.5px rgba(245,236,219,.7)}
+.botao.vazado:hover{background:rgba(245,236,219,.1)}
+.botao.claro{background:var(--linho);color:var(--bordo)!important}
+.botao.claro:hover{background:#fff}
+
+/* topo: transparente sobre o vídeo, sólido depois */
+.topo{position:fixed;inset:0 0 auto;z-index:40;transition:background .35s,border-color .35s,color .35s;border-bottom:1px solid transparent;color:var(--creme-texto)}
+.topo .miolo{display:flex;align-items:center;justify-content:space-between;height:72px}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none}
+.marca .lis{color:var(--ouro-claro);font-size:24px;transition:color .35s}
+.marca span{font-family:var(--display);font-size:1.25rem;font-weight:600;letter-spacing:.05em}
+.nav{display:flex;gap:30px;align-items:center}
+.nav a:not(.botao){text-decoration:none;font-weight:500;font-size:1rem;opacity:.85}
+.nav a:not(.botao):hover{opacity:1}
+.topo.solido{background:rgba(239,228,207,.96);backdrop-filter:blur(8px);border-color:rgba(168,134,79,.35);color:var(--cafe)}
+.topo.solido .marca .lis{color:var(--ouro)}
+.topo:not(.solido) .marca{opacity:0;pointer-events:none}
+.topo .marca{transition:opacity .35s}
+@media (max-width:860px){.nav a:not(.botao){display:none}.topo .botao{min-height:42px;padding:8px 16px}}
+
+/* hero com vídeo */
+.hero{position:relative;isolation:isolate;min-height:100svh;display:grid;place-items:center;text-align:center;color:var(--creme-texto);background:var(--noite) url(video/salao-poster.webp) center/cover;overflow:hidden}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(ellipse at center,rgba(20,14,10,.55) 0%,rgba(20,14,10,.78) 70%),linear-gradient(to bottom,rgba(20,14,10,.5),rgba(20,14,10,.2) 30%,rgba(20,14,10,.9))}
+.hero .conteudo{padding:120px 24px 96px;max-width:980px}
+.assinatura-logo{display:flex;align-items:center;justify-content:center;gap:clamp(20px,4vw,44px)}
+.assinatura-logo .logo{width:clamp(220px,34vw,400px);height:auto;filter:drop-shadow(0 2px 18px rgba(0,0,0,.45))}
+.assinatura-logo .risco{width:1px;align-self:stretch;margin:14px 0;background:linear-gradient(to bottom,transparent,var(--ouro-claro),transparent);transform-origin:center}
+.assinatura-logo .anos{font-size:clamp(4.2rem,9vw,7.4rem)}
+.hero h1{font-weight:500;font-style:italic;font-variation-settings:"opsz" 28;font-size:clamp(1.5rem,3vw,2.3rem);line-height:1.25;max-width:26ch;margin:44px auto 36px;text-wrap:balance}
+.hero .acoes{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hero .rolar{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;font-size:.9rem;color:rgba(245,236,219,.7);text-decoration:none}
+.hero .rolar::after{content:"";width:1px;height:40px;background:linear-gradient(var(--ouro-claro),transparent)}
+.pausa{position:absolute;right:20px;bottom:24px;width:44px;height:44px;display:grid;place-items:center;border:0;background:transparent;color:rgba(245,236,219,.75);cursor:pointer}
+.pausa:hover{color:var(--creme-texto)}
+.pausa svg{width:20px;height:20px;fill:currentColor}
+@media (max-width:640px){
+  .assinatura-logo{flex-direction:column;gap:18px}
+  .assinatura-logo .risco{width:64px;height:1px;align-self:center;margin:0;background:linear-gradient(to right,transparent,var(--ouro-claro),transparent)}
+  .hero h1{margin:32px auto 28px}
+  .hero .rolar{display:none}
+  .pausa{right:8px;bottom:8px}
+}
+
+/* quadro 1872 */
+.quadro-sec{padding:120px 0 110px}
+.quadro{max-width:880px;margin:0 auto}
+.moldura{padding:clamp(10px,2vw,20px);background:linear-gradient(135deg,#8c6c3b,#d4b77e 30%,#8a6a38 55%,#caa86c 80%,#7b5d2f);box-shadow:0 40px 70px -35px rgba(43,29,20,.6)}
+.moldura img{width:100%;filter:sepia(.25) contrast(1.02);border:6px solid #1f150e}
+.quadro figcaption{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:start;margin-top:36px}
+.quadro .ano{font-family:var(--display);font-size:clamp(3.5rem,8vw,5.5rem);line-height:.8;color:var(--bordo);font-weight:400}
+.quadro figcaption p{max-width:56ch;color:var(--sepia);margin:0}
+@media (max-width:600px){.quadro-sec{padding:80px 0}.quadro figcaption{grid-template-columns:1fr;gap:10px}}
+
+/* coxa creme */
+.coxa{background:var(--bordo);color:var(--linho);padding:120px 0;position:relative;overflow:hidden}
+.coxa::after{content:"";position:absolute;left:-120px;bottom:-120px;width:520px;height:520px;background:var(--bordo-escuro);
+  -webkit-mask:url(img/flor-de-lis.png) center/contain no-repeat;mask:url(img/flor-de-lis.png) center/contain no-repeat;opacity:.55;pointer-events:none}
+.coxa .miolo{display:grid;grid-template-columns:1fr 1.05fr;gap:72px;align-items:center;position:relative;z-index:1}
+.coxa h2{font-size:clamp(2.8rem,6vw,4.8rem);font-weight:500}
+.coxa h2 em{font-style:italic;font-weight:400;color:var(--ouro-claro);display:block;font-size:.5em;margin-bottom:.4em;letter-spacing:0}
+.coxa .corpo{max-width:44ch;margin-top:28px;color:#F1E4CF}
+.coxa blockquote{margin:40px 0 0;padding:26px 0 0;border-top:1px solid rgba(212,183,126,.45);font-family:var(--display);font-style:italic;font-size:clamp(1.6rem,2.8vw,2.2rem);line-height:1.25}
+.coxa blockquote small{display:block;margin-top:10px;font:400 1rem/1.4 var(--texto);font-style:normal;color:var(--ouro-claro)}
+.coxa .prato{position:relative;display:grid;place-items:center}
+.coxa .prato::before{content:"";position:absolute;width:92%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(212,183,126,.22),rgba(212,183,126,0) 65%)}
+.coxa .prato img{position:relative;width:min(100%,560px);height:auto;filter:drop-shadow(0 34px 30px rgba(30,10,8,.45)) drop-shadow(0 6px 8px rgba(30,10,8,.3))}
+@media (max-width:900px){.coxa{padding:90px 0}.coxa .miolo{grid-template-columns:1fr;gap:40px}.coxa .prato img{width:min(88%,440px)}}
+
+/* a casa */
+.casa{padding:130px 0 110px}
+.cabeca{max-width:640px;margin-bottom:56px}
+.cabeca h2{font-size:clamp(2.2rem,4.6vw,3.4rem);text-wrap:balance}
+.cabeca p{color:var(--sepia);margin-top:18px;font-size:1.125rem}
+.andares{display:grid;grid-template-columns:repeat(12,1fr);gap:28px}
+.andar img{width:100%;object-fit:cover}
+.andar h3{font-size:1.6rem;margin:20px 0 8px}
+.andar p{color:var(--sepia);font-size:1rem;max-width:46ch}
+.andar .lugares{font-family:var(--display);font-style:italic;font-weight:500;color:var(--bordo);font-size:1.1rem;margin:16px 0 0}
+.andar .lugares + h3{margin-top:4px}
+.andar.t1{grid-column:1/8}.andar.t1 img{aspect-ratio:16/9}
+.andar.t2{grid-column:8/13;padding-top:90px}.andar.t2 img{aspect-ratio:4/3}
+.andar.t3{grid-column:1/6}.andar.t3 img{aspect-ratio:4/3}
+.andar.t4{grid-column:6/13;padding-top:60px}.andar.t4 img{aspect-ratio:16/9;object-position:center 60%}
+@media (max-width:820px){.casa{padding:90px 0}.andares{grid-template-columns:1fr;gap:48px}.andar.t1,.andar.t2,.andar.t3,.andar.t4{grid-column:auto;padding-top:0}}
+
+/* vista da catedral */
+.vista{background:var(--noite);color:var(--creme-texto);padding:120px 0}
+.vista .miolo{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:center}
+.vista h2{font-size:clamp(2.2rem,4.4vw,3.4rem);margin-bottom:22px;text-wrap:balance}
+.vista p{color:#EDE1CC;max-width:40ch}
+.vista .lis{color:var(--ouro-claro);font-size:30px;margin-bottom:22px}
+/* vídeo em tamanho próximo do original (1280px) para não perder nitidez */
+.vista .janela{position:relative;width:100%;max-width:680px;justify-self:end;padding:10px;border:1px solid rgba(212,183,126,.45)}
+.vista video{width:100%;aspect-ratio:16/9;object-fit:cover;background:#000}
+.vista .pausa{right:18px;bottom:18px}
+@media (max-width:820px){
+  .vista{padding:80px 0}
+  .vista .miolo{grid-template-columns:1fr;gap:36px}
+  .vista .janela{order:-1;justify-self:stretch;max-width:none}
+}
+
+/* memoria */
+.memoria{background:var(--areia);padding:110px 0}
+.memoria .miolo{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:center}
+.memoria img{width:100%;filter:grayscale(1) sepia(.35);box-shadow:14px 14px 0 var(--pergaminho)}
+.memoria h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:22px;text-wrap:balance}
+.memoria p{color:var(--sepia);max-width:52ch}
+.memoria .assinatura{font-family:var(--script);font-size:2.6rem;line-height:1.3;color:var(--bordo);margin-top:8px}
+@media (max-width:820px){.memoria{padding:80px 0}.memoria .miolo{grid-template-columns:1fr;gap:40px}.memoria img{max-width:420px}}
+
+/* prato do dia: um especial por dia da semana */
+.semana{background:var(--noite);color:var(--creme-texto);padding:130px 0}
+.semana .cabeca p{color:#E3D5BE}
+.semana-grade{display:grid;grid-template-columns:minmax(260px,.75fr) 1.5fr;gap:56px;align-items:start}
+.dias{display:flex;flex-direction:column;border-top:1px solid rgba(212,183,126,.25)}
+.dias button{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2px 12px;padding:18px 18px 18px 20px;border-bottom:1px solid rgba(212,183,126,.25);border-left:2px solid transparent;transition:background .2s,border-color .2s}
+.dias button:hover{background:rgba(212,183,126,.06)}
+.dias button:focus-visible{outline:2px solid var(--ouro-claro);outline-offset:-2px}
+.dias button[aria-selected="true"]{background:rgba(212,183,126,.1);border-left-color:var(--ouro-claro)}
+.dias .dia{grid-column:1;font-family:var(--display);font-style:italic;font-weight:500;font-size:1rem;color:var(--ouro-claro);font-variation-settings:"opsz" 14}
+.dias .nome{grid-column:1;font-weight:600;font-size:1.1rem;color:var(--creme-texto)}
+.dias .hoje{grid-column:2;grid-row:1/3;background:var(--ouro-claro);color:var(--noite);font-size:.8rem;font-weight:700;padding:4px 10px;border-radius:99px}
+.prato-dia .foto{padding:10px;border:1px solid rgba(212,183,126,.45)}
+.prato-dia img{width:100%;aspect-ratio:4/3;object-fit:cover;animation:aparece .5s ease-out}
+.prato-dia .quando-dia{font-family:var(--script);font-size:2.3rem;line-height:1.2;color:var(--ouro-claro);margin:28px 0 0}
+.prato-dia h3{font-size:clamp(2.2rem,4vw,3.2rem);margin:2px 0 14px}
+.prato-dia p{color:#E3D5BE;max-width:48ch;font-size:1.0625rem;margin:0}
+@keyframes aparece{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.prato-dia img{animation:none}}
+@media (max-width:900px){
+  .semana{padding:90px 0}
+  .semana-grade{grid-template-columns:1fr;gap:28px}
+  .dias{flex-direction:row;overflow-x:auto;border:0;gap:8px;margin:0 -16px;padding:0 16px 6px;scrollbar-width:none}
+  .dias button{flex:none;grid-template-columns:auto auto;padding:10px 16px;border:1px solid rgba(212,183,126,.35);border-radius:99px}
+  .dias button[aria-selected="true"]{border-color:var(--ouro-claro)}
+  .dias .nome{display:none}
+  .dias .dia{font-size:1rem}
+  .dias .hoje{grid-row:auto;grid-column:2}
+  .prato-dia .quando-dia{margin-top:20px}
+}
+
+/* clássicos de todo dia */
+.classicos{padding:130px 0}
+.classicos .grade{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.lista{list-style:none;margin:0;padding:0;border-top:1px solid rgba(110,86,65,.35)}
+.lista li{display:grid;grid-template-columns:1fr auto;gap:6px 20px;padding:22px 0;border-bottom:1px solid rgba(110,86,65,.35)}
+.lista h3{font-size:1.4rem}
+.lista p{grid-column:1/-1;margin:0;color:var(--sepia);font-size:.98rem}
+.lista .quando{font-family:var(--display);font-style:italic;font-weight:500;color:var(--bordo);font-size:1.05rem;white-space:nowrap}
+.classicos .nota{font-size:.98rem;color:var(--sepia);margin-top:26px}
+.classicos .nota a{color:var(--bordo)}
+.xicara{position:relative;display:grid;place-items:center;text-align:center}
+.xicara::before{content:"";position:absolute;width:90%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(168,134,79,.22),rgba(168,134,79,0) 65%)}
+.xicara img{position:relative;width:min(100%,480px);height:auto;filter:drop-shadow(0 30px 26px rgba(43,29,20,.28)) drop-shadow(0 6px 8px rgba(43,29,20,.18))}
+.xicara figcaption{position:relative;font-family:var(--script);font-size:2.3rem;line-height:1.15;color:var(--bordo);margin-top:10px}
+@media (max-width:900px){.classicos{padding:90px 0}.classicos .grade{grid-template-columns:1fr;gap:40px}.xicara img{width:min(80%,380px)}}
+
+/* doces e bolos */
+.doces{position:relative;overflow:hidden;background:var(--areia);padding:130px 0}
+.doces .miolo{position:relative;z-index:1}
+/* ilustrações a lápis (rosquinha, pretzel, ramo), só decorativas */
+.desenho{position:absolute;z-index:0;height:auto;pointer-events:none;user-select:none;transform:scaleX(var(--e,1)) rotate(var(--r,0deg))}
+.doces .rosquinha{width:170px;top:24px;left:max(10px,calc(50% - 700px))}
+.doces .pretzel{width:180px;top:18px;right:max(10px,calc(50% - 700px))}
+.doces .ramo.a{width:120px;bottom:20px;left:max(4px,calc(50% - 690px))}
+.doces .ramo.b{width:120px;bottom:20px;right:max(4px,calc(50% - 690px))}
+.doces-grade{display:grid;grid-template-columns:repeat(12,1fr);align-items:center}
+.doces .foto{grid-column:1/10;grid-row:1;padding:10px;background:var(--linho);box-shadow:0 30px 60px -34px rgba(43,29,20,.55)}
+.doces .foto img{width:100%;aspect-ratio:3/2;object-fit:cover;object-position:40% center}
+.doces .cartao{grid-column:8/13;grid-row:1;position:relative;z-index:1;background:var(--linho);border:1px solid var(--ouro);outline:1px solid var(--ouro);outline-offset:-10px;padding:48px 44px}
+.doces .cartao .lis{color:var(--ouro);font-size:28px;margin-bottom:14px}
+.doces h2{font-size:clamp(2.4rem,4.6vw,3.4rem);margin-bottom:18px}
+.doces .cartao p{color:var(--sepia);font-size:1.0625rem}
+.doces .cartao .botao{margin-top:8px}
+.vitrine{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:56px 0 0;padding:0;list-style:none}
+.vitrine img{width:100%;aspect-ratio:338/100;object-fit:cover}
+.doces .lema{grid-column:1/-1;text-align:center;font-family:var(--script);font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.2;color:var(--bordo);margin:40px 0 0}
+@media (max-width:900px){
+  .doces{padding:90px 0}
+  .doces .rosquinha{width:96px;top:10px;left:4px}
+  .doces .pretzel{width:100px;top:8px;right:4px}
+  .doces .ramo.a,.doces .ramo.b{width:72px;bottom:8px}
+  .doces-grade{grid-template-columns:1fr}
+  .doces .foto,.doces .cartao{grid-column:1;grid-row:auto}
+  .doces .cartao{margin:-40px 16px 0;padding:40px 28px}
+  .vitrine{grid-template-columns:1fr 1fr;gap:10px;margin-top:40px}
+}
+
+/* ramos nas outras seções */
+.quadro-sec,.casa,.classicos,.memoria{position:relative;overflow:hidden}
+.quadro-sec .miolo,.casa .miolo,.classicos .miolo,.memoria .miolo{position:relative;z-index:1}
+.quadro-sec .ramo.a{width:150px;bottom:150px;left:max(0px,calc(50% - 600px))}
+.quadro-sec .ramo.b{width:130px;top:90px;right:max(0px,calc(50% - 590px))}
+.casa .ramo{width:170px;top:70px;right:max(8px,calc(50% - 560px))}
+.memoria .ramo{width:130px;bottom:-10px;right:max(0px,calc(50% - 660px))}
+.xicara .ramo{position:absolute;width:170px;left:-8%;bottom:30%;filter:none}
+.memoria .ramo{filter:none;box-shadow:none}
+.convite{position:relative;overflow:hidden}
+.convite > :not(.desenho){position:relative;z-index:1}
+.convite .ramo.a{width:110px;left:14px;bottom:10px}
+.convite .ramo.b{width:110px;right:14px;top:14px}
+@media (max-width:820px){
+  .quadro-sec .ramo.b,.memoria .ramo{display:none}
+  .quadro-sec .ramo.a{width:90px;bottom:auto;top:24px;left:0}
+  .casa .ramo{width:90px;top:14px;right:0}
+  .xicara .ramo{width:100px}
+  .convite .ramo.a,.convite .ramo.b{width:70px}
+}
+
+/* eventos */
+.eventos{padding:130px 0}
+.convite{background:var(--linho);border:1px solid var(--ouro);outline:1px solid var(--ouro);outline-offset:-10px;padding:clamp(48px,7vw,88px) clamp(24px,6vw,72px);text-align:center}
+.convite .lis{color:var(--ouro);font-size:34px;margin-bottom:16px}
+.convite h2{font-size:clamp(2.2rem,5vw,3.6rem);max-width:17ch;margin:0 auto 20px;text-wrap:balance}
+.convite p{max-width:56ch;margin:0 auto 32px;color:var(--sepia);font-size:1.0625rem}
+.convite ul{list-style:none;padding:0;margin:0 auto 38px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px;font-family:var(--display);font-style:italic;font-weight:500;font-size:1.15rem;color:var(--bordo)}
+@media (max-width:600px){.eventos{padding:90px 0}}
+
+/* visite */
+.visite{background:var(--cafe);color:var(--pergaminho);padding:110px 0}
+.visite .miolo{display:grid;grid-template-columns:1fr 1.15fr;gap:64px;align-items:stretch}
+.visite h2{font-size:clamp(2.2rem,4.6vw,3.4rem);margin-bottom:20px}
+.visite p{color:#E3D5BE;max-width:46ch}
+.visite dl{margin:36px 0;display:grid;gap:22px}
+.visite dt{font-family:var(--display);font-style:italic;color:var(--ouro-claro);font-size:1.05rem}
+.visite dd{margin:2px 0 0;font-size:1.125rem}
+.visite dd a{text-decoration:none;border-bottom:1px solid rgba(212,183,126,.5)}
+.visite dd a:hover{border-color:var(--ouro-claro)}
+.mapa{min-height:440px;border:1px solid rgba(212,183,126,.4);position:relative;background:#3a2a1f}
+.mapa iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:sepia(.3) saturate(.85)}
+@media (max-width:860px){.visite{padding:80px 0}.visite .miolo{grid-template-columns:1fr}.mapa{min-height:320px}}
+
+/* rodape */
+.rodape{background:var(--noite);color:#A8957B;padding:64px 0 40px;font-size:.95rem}
+.rodape .miolo{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
+.rodape .selo{display:flex;align-items:center;gap:28px}
+.rodape .selo img{width:180px;height:auto}
+.rodape .selo .anos{font-size:3.6rem}
+.rodape .selo .risco{width:1px;height:70px;background:rgba(212,183,126,.45)}
+.rodape .fim{border-top:1px solid rgba(212,183,126,.18);margin-top:40px;padding-top:24px;width:100%;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.rodape a{color:var(--ouro-claro)}
+
+.zap{position:fixed;right:20px;bottom:20px;z-index:30;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 8px 24px -6px rgba(0,0,0,.4);transition:transform .2s,opacity .3s}
+.zap:hover{transform:scale(1.06)}
+.zap svg{width:30px;height:30px;fill:#fff}
+.zap.escondido{opacity:0;pointer-events:none}
+</style>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topo" id="topo">
+  <div class="miolo">
+    <a class="marca" href="#inicio" aria-label="Padaria Santa Tereza, início"><i class="lis" aria-hidden="true"></i><span>Santa Tereza</span></a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#coxa-creme">Coxa Creme</a>
+      <a href="#a-casa">A casa</a>
+      <a href="#cardapio">Cardápio</a>
+      <a href="#doces">Doces</a>
+      <a href="#eventos">Eventos</a>
+      <a class="botao" href="#visite">Como chegar</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="inicio" aria-label="Padaria Santa Tereza, 150 anos de história">
+  <video id="video-hero" muted loop playsinline preload="auto" poster="video/salao-poster.webp" aria-hidden="true">
+    <source src="video/salao.webm" type="video/webm">
+    <source src="video/salao.mp4" type="video/mp4">
+  </video>
+  <div class="conteudo">
+    <div class="assinatura-logo">
+      <img class="logo" src="img/logo-claro.png" alt="Padaria Santa Tereza, desde 1872" width="385" height="216">
+      <span class="risco" aria-hidden="true"></span>
+      <div class="anos" role="img" aria-label="150 anos de história"><span class="n" aria-hidden="true">150</span><span class="t" aria-hidden="true"><b>anos</b><i>de história</i></span></div>
+    </div>
+    <h1>A padaria mais antiga em funcionamento de São Paulo, no coração do Centro Histórico.</h1>
+    <div class="acoes">
+      <a class="botao ouro" href="#visite">Ver endereço e contato</a>
+      <a class="botao vazado" href="#coxa-creme">Conhecer a Coxa Creme</a>
+    </div>
+  </div>
+  <a class="rolar" href="#conteudo">Role para conhecer</a>
+  <button class="pausa" type="button" data-video="video-hero" aria-label="Tocar vídeo">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+  </button>
+</section>
+
+<main id="conteudo">
+  <section class="quadro-sec" aria-label="Nossa história">
+    <img class="desenho ramo a" src="img/desenho-ramo.webp" alt="" aria-hidden="true" width="298" height="480" loading="lazy" style="--e:-1;--r:-18deg">
+    <img class="desenho ramo b" src="img/desenho-ramo.webp" alt="" aria-hidden="true" width="298" height="480" loading="lazy" style="--r:160deg">
+    <div class="miolo">
+      <figure class="quadro">
+        <div class="moldura"><img src="img/fachada-1872.webp" alt="Fotografia antiga em preto e branco da esquina da Padaria e Confeitaria Santa Teresa, com crianças e uma carroça na rua de paralelepípedos." width="542" height="372" loading="lazy"></div>
+        <figcaption>
+          <span class="ano">1872</span>
+          <p>Abrimos as portas na época do Império, com pães, caldos e canjas. A cidade mudou em volta, e a casa continua na Praça Dr. João Mendes, recebendo gerações com o mesmo cuidado de sempre. Esta foto fica pendurada no nosso salão.</p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="coxa" id="coxa-creme">
+    <div class="miolo">
+      <div>
+        <h2><em>A mais famosa de São Paulo</em>Coxa Creme</h2>
+        <p class="corpo">Não é coxinha. É uma coxa de frango inteira e suculenta, envolvida num creme de galinha aveludado, empanada e frita até ficar dourada e crocante por fora. Uma receita que virou o símbolo da casa.</p>
+        <blockquote>“É de comer rezando.”<small>Quem prova, entende.</small></blockquote>
+      </div>
+      <div class="prato">
+        <img src="img/coxa-creme-recorte.webp" alt="Coxa Creme dourada e crocante em pé sobre um prato branco com borda e flor de lis douradas." width="1000" height="904" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="casa" id="a-casa">
+    <img class="desenho ramo " src="img/desenho-ramo.webp" alt="" aria-hidden="true" width="298" height="480" loading="lazy" style="--r:20deg">
+    <div class="miolo">
+      <div class="cabeca">
+        <h2>Dois andares, um balcão de pães e muita história nas paredes</h2>
+        <p>Do café rápido em pé ao almoço sem pressa, cada canto da casa tem seu ritmo.</p>
+      </div>
+      <div class="andares">
+        <article class="andar t1">
+          <img src="img/balcao-terreo.webp" alt="Balcão do térreo com clientes sentados e o letreiro Santa Tereza ao fundo." loading="lazy">
+          <p class="lugares">Térreo, até 120 clientes</p>
+          <h3>O balcão</h3>
+          <p>Atendimento no estilo das antigas padarias paulistanas. Café, salgados clássicos e o movimento do Centro passando pela porta.</p>
+        </article>
+        <article class="andar t2">
+          <img src="img/balcao-paes.webp" alt="Vitrines com pães, doces e frios no balcão de pães." loading="lazy">
+          <h3>O balcão dos pães</h3>
+          <p>Onde muita gente começa o dia. Fornadas feitas com as receitas da casa, para comer aqui ou levar.</p>
+        </article>
+        <article class="andar t3">
+          <img src="img/salao.webp" alt="Salão com mesas de madeira, cadeiras de couro verde e fotos antigas de São Paulo nas paredes." loading="lazy">
+          <h3>Os salões</h3>
+          <p>Paredes com fotografias da São Paulo antiga, madeira escura e mesas postas para quem quer sentar com calma.</p>
+        </article>
+        <article class="andar t4">
+          <img src="img/salao-superior.webp" alt="Restaurante do piso superior cheio de clientes almoçando." loading="lazy">
+          <p class="lugares">Piso superior, até 170 pessoas</p>
+          <h3>O restaurante</h3>
+          <p>Salão amplo e aconchegante para almoços, encontros e comemorações, com pratos consagrados da culinária paulista.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="vista" aria-label="Vista para a Catedral da Sé">
+    <div class="miolo">
+      <div class="texto">
+        <i class="lis" aria-hidden="true"></i>
+        <h2>Da janela, a Catedral da Sé</h2>
+        <p>Estamos a poucos passos do marco zero da cidade. Janela aberta, mesa posta e a cúpula da Sé entre as árvores da praça: um brinde que só o Centro Histórico oferece.</p>
+      </div>
+      <div class="janela">
+        <video id="video-vista" muted loop playsinline preload="none" poster="video/brinde-poster.webp" width="1280" height="720" aria-hidden="true">
+          <source src="video/brinde.webm" type="video/webm">
+          <source src="video/brinde.mp4" type="video/mp4">
+        </video>
+        <button class="pausa" type="button" data-video="video-vista" aria-label="Tocar vídeo">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="memoria" aria-label="Memória da casa">
+    <img class="desenho ramo " src="img/desenho-ramo.webp" alt="" aria-hidden="true" width="298" height="480" loading="lazy" style="--r:-10deg">
+    <div class="miolo">
+      <img src="img/balcao-antigo.webp" alt="Foto antiga de um garçom de gravata borboleta no balcão movimentado da padaria." loading="lazy" width="418" height="558">
+      <div>
+        <h2>O tempo passa, a cidade muda, a essência fica</h2>
+        <p>Por aqui passaram avós, pais e netos. Profissionais do Fórum, fiéis da Catedral, turistas e moradores do Centro dividem o mesmo balcão há mais de um século e meio.</p>
+        <p>A Santa Tereza aprendeu a se reinventar sem perder o jeito de sempre: pão fresco, atendimento de balcão e receitas que marcaram época.</p>
+        <p class="assinatura">Tradição que atravessa gerações</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="semana" id="cardapio">
+    <div class="miolo">
+      <div class="cabeca">
+        <h2>Um prato da casa para cada dia</h2>
+        <p>De segunda a sábado, o almoço ganha um especial. Escolha o dia para ver o prato.</p>
+      </div>
+      <div class="semana-grade">
+        <div class="dias" role="tablist" aria-label="Dias da semana" aria-orientation="vertical">
+          <button role="tab" id="tab-segunda" aria-controls="dia-segunda" aria-selected="true"><span class="dia">Segunda</span><span class="nome">Medalhão suíno</span></button>
+          <button role="tab" id="tab-terca" aria-controls="dia-terca" aria-selected="false"><span class="dia">Terça</span><span class="nome">Frango à moda</span></button>
+          <button role="tab" id="tab-quarta" aria-controls="dia-quarta" aria-selected="false"><span class="dia">Quarta e sábado</span><span class="nome">Feijoada</span></button>
+          <button role="tab" id="tab-quinta" aria-controls="dia-quinta" aria-selected="false"><span class="dia">Quinta</span><span class="nome">Cupim desfiado</span></button>
+          <button role="tab" id="tab-sexta" aria-controls="dia-sexta" aria-selected="false"><span class="dia">Sexta</span><span class="nome">Saint Peter</span></button>
+        </div>
+        <div class="paineis">
+        <article class="prato-dia" role="tabpanel" id="dia-segunda" aria-labelledby="tab-segunda" tabindex="0">
+          <div class="foto"><img src="img/medalhao-suino.webp" alt="Medalhão de filé mignon suíno ao molho madeira com cogumelos, ao lado de risoto de parmesão." width="1200" height="896" loading="lazy"></div>
+          <p class="quando-dia">Toda segunda-feira</p>
+          <h3>Medalhão suíno</h3>
+          <p>Medalhão de filé mignon suíno ao molho madeira, servido com risoto de parmesão.</p>
+        </article>
+        <article class="prato-dia" role="tabpanel" id="dia-terca" aria-labelledby="tab-terca" tabindex="0">
+          <div class="foto"><img src="img/frango-a-moda.webp" alt="Frango empanado recheado, batatas fritas e risoto de abobrinha em travessa branca." width="1200" height="896" loading="lazy"></div>
+          <p class="quando-dia">Toda terça-feira</p>
+          <h3>Frango à moda</h3>
+          <p>Frango empanado, recheado de presunto e queijo, acompanhado de risoto de abobrinha e fritas.</p>
+        </article>
+        <article class="prato-dia" role="tabpanel" id="dia-quarta" aria-labelledby="tab-quarta" tabindex="0">
+          <div class="foto"><img src="img/feijoada.webp" alt="Feijoada em panela de barro com prato de arroz, couve, farofa, torresmo, bisteca e laranja." width="1200" height="896" loading="lazy" style="object-position:center 72%"></div>
+          <p class="quando-dia">Toda quarta e todo sábado</p>
+          <h3>Feijoada</h3>
+          <p>Feijoada completa, servida com bisteca, farofa, laranja, banana, couve e molho de pimenta.</p>
+        </article>
+        <article class="prato-dia" role="tabpanel" id="dia-quinta" aria-labelledby="tab-quinta" tabindex="0">
+          <div class="foto"><img src="img/cupim-desfiado.webp" alt="Cupim desfiado sobre purê de mandioquinha, com arroz e molho à parte." width="1200" height="896" loading="lazy"></div>
+          <p class="quando-dia">Toda quinta-feira</p>
+          <h3>Cupim desfiado</h3>
+          <p>Cupim desfiado ao molho, acompanhado de purê de mandioquinha e arroz.</p>
+        </article>
+        <article class="prato-dia" role="tabpanel" id="dia-sexta" aria-labelledby="tab-sexta" tabindex="0">
+          <div class="foto"><img src="img/saint-peter-prato.webp" alt="Filé de Saint Peter grelhado com alcaparras e cogumelos, arroz à grega e legumes." width="628" height="398" loading="lazy"></div>
+          <p class="quando-dia">Toda sexta-feira</p>
+          <h3>Saint Peter</h3>
+          <p>Saint Peter com arroz à grega e legumes.</p>
+        </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="classicos" id="classicos">
+    <div class="miolo grade">
+      <div>
+        <div class="cabeca">
+          <h2>Os clássicos de todo dia</h2>
+          <p>Da canja de 1872 à Coxa Creme, receitas que atravessam gerações no balcão e no restaurante.</p>
+        </div>
+        <ul class="lista">
+          <li><h3>Coxa Creme</h3><span class="quando">todos os dias</span><p>O carro-chefe. Coxa de frango inteira, creme de galinha e casquinha crocante.</p></li>
+          <li><h3>Filé à parmegiana</h3><span class="quando">no restaurante</span><p>Um dos pratos mais pedidos do andar de cima.</p></li>
+          <li><h3>Risotos e batatas</h3><span class="quando">no restaurante</span><p>Diferentes versões para acompanhar ou virar o prato principal.</p></li>
+          <li><h3>Pães da casa</h3><span class="quando">saindo do forno</span><p>Pão francês, pães especiais, doces e frios no balcão.</p></li>
+          <li><h3>Cafezinho</h3><span class="quando">no balcão</span><p>Servido do jeito das antigas padarias paulistanas, para começar o dia ou fechar o almoço.</p></li>
+        </ul>
+        <p class="nota">O cardápio completo fica na entrada da padaria e no nosso <a href="https://www.instagram.com/padariasantatereza/" target="_blank" rel="noopener">Instagram</a>.</p>
+      </div>
+      <figure class="xicara">
+        <img class="desenho ramo " src="img/desenho-ramo.webp" alt="" aria-hidden="true" width="298" height="480" loading="lazy" style="--r:-12deg">
+        <img src="img/xicara-cafe.webp" alt="Xícara de café com borda dourada e flor de lis desenhada na espuma e na porcelana." width="900" height="873" loading="lazy">
+        <figcaption>Um cafezinho no balcão</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="doces" id="doces">
+    <img class="desenho rosquinha" src="img/desenho-rosquinha.webp" alt="" aria-hidden="true" width="520" height="335" loading="lazy" style="--r:-8deg">
+    <img class="desenho pretzel" src="img/desenho-pretzel.webp" alt="" aria-hidden="true" width="520" height="348" loading="lazy" style="--r:8deg">
+    <img class="desenho ramo a" src="img/desenho-ramo.webp" alt="" aria-hidden="true" width="298" height="480" loading="lazy" style="--e:-1;--r:-6deg">
+    <img class="desenho ramo b" src="img/desenho-ramo.webp" alt="" aria-hidden="true" width="298" height="480" loading="lazy" style="--r:-6deg">
+    <div class="miolo doces-grade">
+      <div class="foto">
+        <img src="img/fatias-bolo.webp" alt="Fatias de bolo sobre tábua de madeira: chocolate com granulado, maracujá, red velvet, coco e outros sabores." width="1376" height="768" loading="lazy">
+      </div>
+      <div class="cartao">
+        <i class="lis" aria-hidden="true"></i>
+        <h2>Doces e bolos</h2>
+        <p>Cada fatia carrega mais de um século e meio de tradição e carinho. Das receitas clássicas aos sabores mais pedidos, nossos doces são feitos para adoçar o seu dia.</p>
+        <p>Na vitrine tem bolo de chocolate com granulado, maracujá, red velvet e coco, além de tortas de red velvet, morango e chocolate com cereja.</p>
+        <a class="botao" href="https://wa.me/5511963494114?text=Ol%C3%A1!%20Gostaria%20de%20saber%20sobre%20os%20doces%20e%20bolos%20da%20Santa%20Tereza." target="_blank" rel="noopener">Perguntar pelo WhatsApp</a>
+      </div>
+      <ul class="vitrine" aria-label="Tortas da vitrine">
+        <li><img src="img/torta-red-velvet.webp" alt="Torta red velvet com morangos." width="338" height="100" loading="lazy"></li>
+        <li><img src="img/torta-chocolate-cereja.webp" alt="Fatias de torta de chocolate com cerejas por cima." width="350" height="100" loading="lazy"></li>
+        <li><img src="img/torta-morango.webp" alt="Torta com cobertura vermelha brilhante, morangos e aro de chocolate." width="338" height="100" loading="lazy"></li>
+        <li><img src="img/torta-nozes.webp" alt="Torta com cobertura crocante dourada." width="350" height="100" loading="lazy"></li>
+      </ul>
+      <p class="lema">Tradição que atravessa gerações, sabor que fica na memória</p>
+    </div>
+  </section>
+
+  <section class="eventos" id="eventos">
+    <div class="miolo">
+      <div class="convite">
+        <img class="desenho ramo a" src="img/desenho-ramo.webp" alt="" aria-hidden="true" width="298" height="480" loading="lazy" style="--e:-1">
+        <img class="desenho ramo b" src="img/desenho-ramo.webp" alt="" aria-hidden="true" width="298" height="480" loading="lazy" style="--r:180deg">
+        <i class="lis" aria-hidden="true"></i>
+        <h2>Celebre seu casamento na padaria mais antiga de São Paulo</h2>
+        <p>Recebemos casamentos, aniversários e confraternizações nos nossos salões. Montamos o cardápio com você, dos salgados clássicos à mesa de doces.</p>
+        <ul>
+          <li>Celebrações de casamento</li>
+          <li>Opções gastronômicas especiais</li>
+          <li>Salão para até 170 pessoas</li>
+        </ul>
+        <a class="botao" href="https://wa.me/5511963494114?text=Ol%C3%A1!%20Gostaria%20de%20saber%20sobre%20eventos%20na%20Padaria%20Santa%20Tereza." target="_blank" rel="noopener">Pedir orçamento pelo WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="visite" id="visite">
+    <div class="miolo">
+      <div>
+        <h2>Venha nos visitar</h2>
+        <p>A poucos passos da Catedral da Sé, do Fórum João Mendes e da estação Sé do Metrô.</p>
+        <dl>
+          <div><dt>Endereço</dt><dd><a href="https://www.google.com/maps/search/?api=1&query=Padaria+Santa+Tereza+Pra%C3%A7a+Doutor+Jo%C3%A3o+Mendes+150+S%C3%A3o+Paulo" target="_blank" rel="noopener">Praça Doutor João Mendes, 150<br>Centro, São Paulo – SP</a></dd></div>
+          <div><dt>Telefone e WhatsApp</dt><dd><a href="https://wa.me/5511963494114" target="_blank" rel="noopener">(11) 96349-4114</a></dd></div>
+          <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/padariasantatereza/" target="_blank" rel="noopener">@padariasantatereza</a></dd></div>
+        </dl>
+        <a class="botao claro" href="https://www.google.com/maps/dir/?api=1&destination=Pra%C3%A7a+Doutor+Jo%C3%A3o+Mendes+150+S%C3%A3o+Paulo" target="_blank" rel="noopener">Traçar rota</a>
+      </div>
+      <div class="mapa">
+        <iframe title="Mapa da Padaria Santa Tereza" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Padaria%20Santa%20Tereza%2C%20Pra%C3%A7a%20Doutor%20Jo%C3%A3o%20Mendes%20150%2C%20S%C3%A3o%20Paulo&z=17&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="miolo">
+    <div class="selo">
+      <img src="img/logo-claro.png" alt="Padaria Santa Tereza, desde 1872" width="385" height="216" loading="lazy">
+      <span class="risco" aria-hidden="true"></span>
+      <div class="anos" role="img" aria-label="150 anos de história"><span class="n" aria-hidden="true">150</span><span class="t" aria-hidden="true"><b>anos</b><i>de história</i></span></div>
+    </div>
+    <p>Praça Dr. João Mendes, 150, Centro, São Paulo<br><a href="https://wa.me/5511963494114" target="_blank" rel="noopener">(11) 96349-4114</a> · <a href="https://www.instagram.com/padariasantatereza/" target="_blank" rel="noopener">@padariasantatereza</a></p>
+    <div class="fim"><span>Padaria Santa Tereza, desde 1872</span><a href="#inicio">Voltar ao topo</a></div>
+  </div>
+</footer>
+
+<a class="zap escondido" id="zap" href="https://wa.me/5511963494114" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.5-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-1-2.2-1s-.5-.2-.7.2l-1 1.2c-.2.2-.4.3-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.3 1.4 3.5c.2.2 2.4 3.6 5.8 5 2.1 1 3 1 4 .8.7-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5 0-.1-.3-.2-.6-.3z"/></svg>
+</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(() => {
+  const reduzir = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Vídeos de fundo: lentos, sem som e pausáveis. Só tocam enquanto aparecem na tela
+  // e não tocam sozinhos se o usuário pediu menos movimento.
+  const PAUSAR = "M7 5h3v14H7zM14 5h3v14h-3z", TOCAR = "M8 5v14l11-7z";
+  document.querySelectorAll("button.pausa[data-video]").forEach((botao) => {
+    const video = document.getElementById(botao.dataset.video);
+    const icone = botao.querySelector("path");
+    let pausadoPeloUsuario = reduzir;
+    const marcar = () => {
+      icone.setAttribute("d", video.paused ? TOCAR : PAUSAR);
+      botao.setAttribute("aria-label", video.paused ? "Tocar vídeo" : "Pausar vídeo");
+    };
+    const tocar = () => video.play().catch(() => {});
+    video.addEventListener("loadedmetadata", () => (video.playbackRate = 0.75));
+    video.addEventListener("play", marcar);
+    video.addEventListener("pause", marcar);
+    botao.addEventListener("click", () => {
+      pausadoPeloUsuario = !video.paused;
+      if (video.paused) tocar(); else video.pause();
+    });
+    new IntersectionObserver(([e]) => {
+      if (e.isIntersecting && !pausadoPeloUsuario) tocar();
+      else if (!e.isIntersecting && !video.paused) video.pause();
+    }, { threshold: 0.2 }).observe(video.closest("section"));
+  });
+
+  // Prato do dia: abas por dia da semana; abre no prato de hoje (segunda a sábado)
+  const abas = [...document.querySelectorAll('.dias [role="tab"]')];
+  const mostrar = (i, focar) => {
+    abas.forEach((aba, j) => {
+      aba.setAttribute("aria-selected", String(j === i));
+      aba.tabIndex = j === i ? 0 : -1;
+      document.getElementById(aba.getAttribute("aria-controls")).hidden = j !== i;
+    });
+    if (focar) abas[i].focus();
+  };
+  abas.forEach((aba, i) => {
+    aba.addEventListener("click", () => mostrar(i));
+    aba.addEventListener("keydown", (e) => {
+      const passo = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
+      if (passo) { e.preventDefault(); mostrar((i + passo + abas.length) % abas.length, true); }
+      else if (e.key === "Home") { e.preventDefault(); mostrar(0, true); }
+      else if (e.key === "End") { e.preventDefault(); mostrar(abas.length - 1, true); }
+    });
+  });
+  // getDay(): 0 = domingo ... 6 = sábado. Sábado também é dia de feijoada (aba de quarta).
+  const abaDoDia = { 1: 0, 2: 1, 3: 2, 4: 3, 5: 4, 6: 2 };
+  const hoje = abaDoDia[new Date().getDay()] ?? -1;
+  if (hoje >= 0) {
+    const selo = document.createElement("span");
+    selo.className = "hoje";
+    selo.textContent = "hoje";
+    abas[hoje].append(selo);
+  }
+  mostrar(Math.max(hoje, 0));
+
+  // Topo sólido e botão do WhatsApp só depois de sair do hero
+  const topo = document.getElementById("topo");
+  const zap = document.getElementById("zap");
+  new IntersectionObserver(([e]) => {
+    topo.classList.toggle("solido", !e.isIntersecting);
+    zap.classList.toggle("escondido", e.isIntersecting);
+  }, { rootMargin: "-72px 0px 0px 0px" }).observe(document.getElementById("inicio"));
+
+  if (!window.gsap || reduzir) return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Um único momento de abertura: logo, risco dourado, selo e chamada
+  gsap.timeline({ defaults: { ease: "power3.out" } })
+    .from(".hero .logo", { opacity: 0, y: 18, duration: 1.1 })
+    .from(".hero .risco", { scaleY: 0, scaleX: 0, duration: .8 }, "-=.5")
+    .from(".hero .anos", { opacity: 0, x: -14, duration: .9 }, "-=.45")
+    .from(".hero h1, .hero .acoes", { opacity: 0, y: 14, duration: .8, stagger: .12 }, "-=.35")
+    .from(".hero .rolar", { opacity: 0, duration: .6 }, "-=.2");
+
+  // Ao rolar: o conteúdo do hero se afasta e o vídeo desce devagar
+  gsap.to(".hero .conteudo", { yPercent: -18, opacity: 0, ease: "none",
+    scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+  gsap.to(".hero video", { yPercent: 12, ease: "none",
+    scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+
+  // Quadro de 1872 se aproxima como se chegássemos perto da parede
+  gsap.fromTo(".moldura", { scale: .9 }, { scale: 1, ease: "none",
+    scrollTrigger: { trigger: ".quadro", start: "top bottom", end: "center center", scrub: 1 } });
+
+  // Coxa Creme sobe devagar sobre o bordô enquanto a seção passa
+  gsap.fromTo(".coxa .prato img", { yPercent: 8, rotate: -3 }, { yPercent: -6, rotate: 1.5, ease: "none",
+    scrollTrigger: { trigger: ".coxa", start: "top bottom", end: "bottom top", scrub: 1 } });
+})();
+</script>
+</body>
+</html>
